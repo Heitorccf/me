@@ -1,7 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Definição do Tipo do Projeto (TypeScript)
+// --- Interfaces TypeScript ---
+interface Certification {
+  title: string;
+  issuer: string;
+  year: string;
+  icon?: string;
+}
+
 interface Project {
   title: string;
   year: string;
@@ -10,65 +17,137 @@ interface Project {
   link?: string;
 }
 
-// Dados dos projetos (simulando um CMS ou arquivo externo)
+// --- DATA ---
+
+const certifications: Certification[] = [
+  {
+    title: "AWS Certified Cloud Practitioner",
+    issuer: "Amazon Web Services (AWS)",
+    year: "2026"
+  }
+];
+
 const projects: Project[] = [
   {
-    title: "Portfólio Astro",
+    title: "librasign",
     year: "2025",
-    description: "Site pessoal estático construído com Astro, Svelte e Tailwind focado em performance máxima (Lighthouse 100).",
-    tags: ["Astro", "Svelte", "TypeScript"],
-    link: "https://github.com/heitorccf/me"
-  },
-  {
-    title: "Sistema de Monitoramento",
-    year: "2024",
-    description: "Dashboard para visualização de dados em tempo real usando WebSockets.",
-    tags: ["Vue.js", "Node.js", "IoT"]
-  },
-  {
-    title: "API Restful",
-    year: "2023",
-    description: "Backend escalável para aplicação de e-commerce.",
-    tags: ["Node.js", "Express", "PostgreSQL"]
+    description: "An open-source software that recognizes gestures from the Brazilian Sign Language (Libras) manual alphabet (A-Z) and translates them into text in real time using computer vision.",
+    link: "https://github.com/Heitorccf/librasign",
+    tags: [
+      "Python",
+      "Open Source",
+      "Machine Learning",
+      "Computer Vision",
+      "Deep Learning",
+      "Accessibility",
+      "Sign Language",
+      "Gesture Recognition",
+      "Hand Tracking"
+    ]
   }
 ];
 ---
 
-<Layout title="Arquivo | Heitor.dev">
-  <div class="max-w-4xl mx-auto py-12">
-    <header class="mb-12">
-      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Arquivo</h1>
-      <p class="text-gray-600 dark:text-gray-400">Uma seleção de projetos em que trabalhei.</p>
+<Layout title="Arquivo | GitHub Pages">
+  <div class="max-w-4xl mx-auto py-16 md:py-24">
+    
+    <header class="mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        Archive
+      </h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400">
+        Professional certifications and open-source contributions.
+      </p>
     </header>
 
-    <div class="grid gap-6">
-      {projects.map((project) => (
-        <article class="group relative p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 transition-colors shadow-sm">
-          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-3">
-            <h2 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">
-              {project.link ? (
-                <a href={project.link} target="_blank" rel="noopener noreferrer" class="focus:outline-none">
-                  <span class="absolute inset-0" aria-hidden="true"></span>
-                  {project.title}
-                </a>
-              ) : (
-                project.title
-              )}
-            </h2>
-            <span class="text-sm font-mono text-gray-500">{project.year}</span>
+    <section class="mb-20">
+      <h2 class="flex items-center text-2xl font-bold text-gray-900 dark:text-white mb-8 border-b border-gray-200 dark:border-gray-800 pb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 text-yellow-500" viewBox="0 0 24 24" fill="currentColor">
+          <path fill-rule="evenodd" d="M8.603 3.799A4.49 4.49 0 0 1 12 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 0 1 3.498 1.307 4.491 4.491 0 0 1 1.307 3.497A4.49 4.49 0 0 1 21.75 12a4.49 4.49 0 0 1-1.549 3.397 4.491 4.491 0 0 1-1.307 3.498 4.491 4.491 0 0 1-3.497 1.307A4.49 4.49 0 0 1 12 21.75a4.49 4.49 0 0 1-3.397-1.549 4.491 4.491 0 0 1-3.498-1.306 4.491 4.491 0 0 1-1.307-3.498A4.49 4.49 0 0 1 2.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 0 1 1.307-3.497 4.491 4.491 0 0 1 3.497-1.307Zm4.45 6.45a.75.75 0 0 0-1.1 0l-2.6 2.6-.9-.9a.75.75 0 1 0-1.1 1.1l1.45 1.45a.75.75 0 0 0 1.1 0l3.15-3.15a.75.75 0 0 0 0-1.1Z" clip-rule="evenodd" />
+        </svg>
+        Certifications
+      </h2>
+
+      <div class="grid gap-6">
+        {certifications.map((cert) => (
+          <div class="relative overflow-hidden group p-6 rounded-2xl border border-yellow-500/30 bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/10 dark:to-orange-900/10 dark:border-yellow-500/20 hover:shadow-xl hover:shadow-yellow-500/10 transition-all duration-300 transform hover:-translate-y-1">
+            <div class="flex items-start justify-between">
+              <div class="flex gap-5 items-center">
+                
+                <div class="p-4 bg-white dark:bg-black rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 text-yellow-600 dark:text-yellow-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.78 4.78 4 4 0 0 1-6.74 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.74Z" />
+                    <path d="m9 12 2 2 4-4" />
+                  </svg>
+                </div>
+
+                <div>
+                  <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                    {cert.title}
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400 font-medium">
+                    {cert.issuer}
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex flex-col items-end">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 border border-green-200 dark:border-green-800">
+                  Verified
+                </span>
+                <span class="mt-2 text-sm text-gray-500">{cert.year}</span>
+              </div>
+            </div>
           </div>
-          
-          <p class="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
-          
-          <div class="flex flex-wrap gap-2">
-            {project.tags.map((tag) => (
-              <span class="px-3 py-1 text-xs font-medium text-blue-700 bg-blue-100 dark:text-blue-300 dark:bg-blue-900/30 rounded-full">
-                {tag}
-              </span>
-            ))}
-          </div>
-        </article>
-      ))}
-    </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="flex items-center text-2xl font-bold text-gray-900 dark:text-white mb-8 border-b border-gray-200 dark:border-gray-800 pb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+        </svg>
+        Projects
+      </h2>
+
+      <div class="grid gap-6">
+        {projects.map((project) => (
+          <article class="group relative p-6 md:p-8 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl hover:border-blue-500 dark:hover:border-blue-500 transition-all shadow-sm hover:shadow-lg hover:shadow-blue-500/5">
+            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-4">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">
+                {project.link ? (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" class="focus:outline-none flex items-center gap-2">
+                    <span class="absolute inset-0" aria-hidden="true"></span>
+                    {project.title}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                      <polyline points="15 3 21 3 21 9"/>
+                      <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                  </a>
+                ) : (
+                  project.title
+                )}
+              </h3>
+              <span class="text-sm text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">{project.year}</span>
+            </div>
+            
+            <p class="text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+              {project.description}
+            </p>
+            
+            <div class="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span class="px-3 py-1.5 text-xs font-semibold tracking-wide text-blue-700 bg-blue-50 dark:text-blue-300 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
   </div>
 </Layout>
