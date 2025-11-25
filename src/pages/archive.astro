@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Definição do Tipo do Projeto (TypeScript)
+interface Project {
+  title: string;
+  year: string;
+  description: string;
+  tags: string[];
+  link?: string;
+}
+
+// Dados dos projetos (simulando um CMS ou arquivo externo)
+const projects: Project[] = [
+  {
+    title: "Portfólio Astro",
+    year: "2025",
+    description: "Site pessoal estático construído com Astro, Svelte e Tailwind focado em performance máxima (Lighthouse 100).",
+    tags: ["Astro", "Svelte", "TypeScript"],
+    link: "https://github.com/heitorccf/me"
+  },
+  {
+    title: "Sistema de Monitoramento",
+    year: "2024",
+    description: "Dashboard para visualização de dados em tempo real usando WebSockets.",
+    tags: ["Vue.js", "Node.js", "IoT"]
+  },
+  {
+    title: "API Restful",
+    year: "2023",
+    description: "Backend escalável para aplicação de e-commerce.",
+    tags: ["Node.js", "Express", "PostgreSQL"]
+  }
+];
+---
+
+<Layout title="Arquivo | Heitor.dev">
+  <div class="max-w-4xl mx-auto py-12">
+    <header class="mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Arquivo</h1>
+      <p class="text-gray-600 dark:text-gray-400">Uma seleção de projetos em que trabalhei.</p>
+    </header>
+
+    <div class="grid gap-6">
+      {projects.map((project) => (
+        <article class="group relative p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 transition-colors shadow-sm">
+          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-3">
+            <h2 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">
+              {project.link ? (
+                <a href={project.link} target="_blank" rel="noopener noreferrer" class="focus:outline-none">
+                  <span class="absolute inset-0" aria-hidden="true"></span>
+                  {project.title}
+                </a>
+              ) : (
+                project.title
+              )}
+            </h2>
+            <span class="text-sm font-mono text-gray-500">{project.year}</span>
+          </div>
+          
+          <p class="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
+          
+          <div class="flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <span class="px-3 py-1 text-xs font-medium text-blue-700 bg-blue-100 dark:text-blue-300 dark:bg-blue-900/30 rounded-full">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</Layout>

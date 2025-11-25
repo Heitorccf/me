@@ -1,0 +1,5 @@
+/// <reference path="../.astro/types.d.ts" />
+/// <reference types="astro/client" />
+/// <reference types="@astrojs/svelte" />
+
+declare module '*.JPG';
