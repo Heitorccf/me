@@ -1,43 +1,37 @@
-# Astro Starter Kit: Minimal
+## ⚙️ Configuração
 
-```sh
-npm create astro@latest -- --template minimal
+O arquivo `astro.config.ts` define a URL base para publicação no GitHub Pages. As variáveis `REPO_NAME` e `GITHUB_USER` devem ser ajustadas conforme o repositório de destino. O sistema utiliza integração com Svelte e Tailwind CSS sem aplicação de estilos base do framework.
+
+## 🚀 Comandos
+
+**Instalação de dependências:**
+
+```bash
+npm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+**Execução em ambiente de desenvolvimento:**
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run dev
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+**Construção para produção:**
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+npm run build
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+**Visualização da build de produção:**
 
-## 🧞 Commands
+```bash
+npm run preview
+```
 
-All commands are run from the root of the project, from a terminal:
+## 📦 Implantação
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+O workflow de GitHub Actions configurado em `.github/workflows/deploy.yml` realiza a construção e publicação automática. O processo ocorre em duas etapas: construção dos arquivos estáticos com upload para o GitHub Pages, seguido da implantação efetiva no ambiente de produção. É necessário configurar as permissões adequadas no repositório para permitir escrita em páginas e tokens de identificação.
 
-## 👀 Want to learn more?
+## 🎨 Personalização
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Para adaptar o portfólio, edite os arquivos em `src/pages/` com as informações desejadas. As imagens devem ser colocadas em `src/assets/` e importadas nos componentes. O esquema de cores e os estilos podem ser ajustados através do Tailwind CSS no arquivo de configuração ou diretamente nas classes dos componentes.
